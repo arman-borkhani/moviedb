@@ -13,9 +13,9 @@ const App = () => {
 
   return (
     <ConfigProvider theme={themeConfig(themeMode)}>
-      <Layout className="h-screen flex flex-col">
+      <Layout style={{ minHeight: '100vh' }}>
         <Navbar changeThemeMode={changeTheme} />
-        <Layout.Content className="grow">
+        <Layout.Content className='grow py-10'>
           <div className="container">
             <MovieGrid />
           </div>
