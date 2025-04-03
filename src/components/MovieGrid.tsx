@@ -1,5 +1,6 @@
-import { Typography } from 'antd'
+import { Col, Row, Typography } from 'antd'
 import useMovies from '../hooks/useMovies'
+import MovieCard from './MovieCard'
 
 const MovieGrid = () => {
   const { movies, error } = useMovies()
@@ -7,11 +8,13 @@ const MovieGrid = () => {
   return (
     <>
       {error && <Typography.Text>{error}</Typography.Text>}
-      <ul>
+      <Row gutter={24}>
         {movies.map((movie) => (
-          <li key={movie.id}>{movie.title}</li>
+          <Col className="gutter-row py-2" sm={12} md={6} xl={4} key={movie.id}>
+            <MovieCard movie={movie} />
+          </Col>
         ))}
-      </ul>
+      </Row>
     </>
   )
 }

@@ -13,6 +13,10 @@ const themeConfig = (themeMode: 'light' | 'dark') => {
         headerPadding: '0',
         headerBg: themeMode === 'light' ? '#fff' : '#001529',
       },
+      Card: {
+        bodyPadding: '1rem 0.75rem 1.5rem',
+        borderRadiusLG: '0.75rem',
+      },
     },
   }
 }
