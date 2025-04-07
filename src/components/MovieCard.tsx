@@ -16,20 +16,20 @@ const MovieCard = ({ movie }: Props) => {
     <Card
       cover={
         <LazyLoadImage
-          height={340}
-          width="100%"
           effect="blur"
           placeholderSrc={posterPlaceholderPath}
           src={posterPath}
+          className="w-full lg:h-80 object-cover rounded-tr-xl rounded-tl-xl"
         />
       }
     >
-      <div className="mb-2">
-        <StarFilled className="mr-1 text-base" style={{ color: '#f5c518' }} />
-        <span className="text-base">{movie.vote_average.toFixed(1)}</span>
-        <span className="text-xs">/10</span>
-      </div>
-      <Card.Meta title={movie.title}></Card.Meta>
+      <Card.Meta title={movie.title} description={
+        <>
+          <StarFilled className="mr-1 text-base" style={{ color: '#f5c518' }} />
+          <span className="text-base">{movie.vote_average.toFixed(1)}</span>
+          <span className="text-xs">/10</span>
+        </>
+      }></Card.Meta>
     </Card>
   )
 }

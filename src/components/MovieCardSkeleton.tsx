@@ -8,7 +8,7 @@ const MovieCardSkeleton = () => {
         <Skeleton.Image
           style={{
             width: '100%',
-            height: 340,
+            height: 320,
             borderTopLeftRadius: '0.75rem',
             borderTopRightRadius: '0.75rem',
           }}
@@ -17,8 +17,8 @@ const MovieCardSkeleton = () => {
       }
     >
       <Space direction="vertical" size="middle" style={{ display: 'flex' }}>
-        <Skeleton.Node active style={{ width: '80px', height: '20px' }} />
         <Skeleton.Input active block style={{ height: '24px' }} />
+        <Skeleton.Node active style={{ width: '80px', height: '20px' }} />
       </Space>
     </Card>
   )
