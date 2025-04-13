@@ -1,5 +1,6 @@
 import { Col, ConfigProvider, Layout, Row } from 'antd'
 import { useState } from 'react'
+import GenreList from './components/GenreList'
 import MovieGrid from './components/MovieGrid'
 import Navbar from './components/Navbar'
 import themeConfig from './themeConfig'
@@ -18,7 +19,9 @@ const App = () => {
         <Layout.Content className="grow py-10">
           <div className="container">
             <Row gutter={24}>
-              <Col xs={24} md={4}></Col>
+              <Col xs={24} md={4}>
+                <GenreList />
+              </Col>
               <Col xs={24} md={20}>
                 <MovieGrid />
               </Col>
