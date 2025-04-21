@@ -17,6 +17,10 @@ const themeConfig = (themeMode: 'light' | 'dark') => {
         bodyPadding: 20,
         borderRadiusLG: 12,
       },
+      Button: {
+        defaultGhostColor: themeMode === 'light' ? '#000' : '#fff',
+        defaultGhostBorderColor: themeMode === 'light' ? '#9e9e9e' : '#424242',
+      },
     },
   }
 }

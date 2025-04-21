@@ -1,4 +1,4 @@
-import { Col, ConfigProvider, Layout, Row } from 'antd'
+import { ConfigProvider, Layout } from 'antd'
 import { useState } from 'react'
 import GenreList from './components/GenreList'
 import MovieGrid from './components/MovieGrid'
@@ -18,14 +18,14 @@ const App = () => {
         <Navbar changeThemeMode={changeTheme} />
         <Layout.Content className="grow py-10">
           <div className="container">
-            <Row gutter={24}>
-              <Col xs={24} md={4}>
+            <div className="flex flex-col lg:flex-row gap-5">
+              <div className="lg:w-56 shrink-0">
                 <GenreList />
-              </Col>
-              <Col xs={24} md={20}>
+              </div>
+              <div>
                 <MovieGrid />
-              </Col>
-            </Row>
+              </div>
+            </div>
           </div>
         </Layout.Content>
       </Layout>
