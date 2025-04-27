@@ -1,3 +1,4 @@
+import Genre from '../entities/Genre'
 import Movie from '../entities/Movie'
 import useData from './useData'
 
@@ -8,9 +9,12 @@ interface FetchMoviesResponse {
   total_results: number
 }
 
-const useMovies = () => {
-  const { data, error, isLoading } =
-    useData<FetchMoviesResponse>('/discover/movie')
+const useMovies = (selectedGenre: Genre | null) => {
+  const { data, error, isLoading } = useData<FetchMoviesResponse>(
+    '/discover/movie',
+    { params: { with_genres: selectedGenre?.id } },
+    [selectedGenre?.id],
+  )
 
   return {
     movies: data?.results || [],

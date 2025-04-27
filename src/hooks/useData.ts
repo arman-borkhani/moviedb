@@ -1,32 +1,40 @@
-import { CanceledError } from 'axios'
+import { AxiosRequestConfig, CanceledError } from 'axios'
 import { useEffect, useState } from 'react'
 import apiClient from '../services/api-client'
 
-const useData = <T>(endpoint: string) => {
+const useData = <T>(
+  endpoint: string,
+  requestConfig?: AxiosRequestConfig,
+  deps?: any[],
+) => {
   const [data, setData] = useState<T | null>(null)
   const [error, setError] = useState('')
   const [isLoading, setLoading] = useState(false)
 
-  useEffect(() => {
-    const controler = new AbortController()
-    setLoading(true)
+  useEffect(
+    () => {
+      const controler = new AbortController()
+      setLoading(true)
 
-    apiClient
-      .get<T>(endpoint, {
-        signal: controler.signal,
-      })
-      .then((res) => {
-        setData(res.data)
-        setLoading(false)
-      })
-      .catch((err) => {
-        if (err instanceof CanceledError) return
-        setError(err.message)
-        setLoading(false)
-      })
+      apiClient
+        .get<T>(endpoint, {
+          signal: controler.signal,
+          ...requestConfig,
+        })
+        .then((res) => {
+          setData(res.data)
+          setLoading(false)
+        })
+        .catch((err) => {
+          if (err instanceof CanceledError) return
+          setError(err.message)
+          setLoading(false)
+        })
 
-    return () => controler.abort()
-  }, [])
+      return () => controler.abort()
+    },
+    deps ? [...deps] : [],
+  )
 
   return { data, error, isLoading }
 }

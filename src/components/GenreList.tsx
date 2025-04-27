@@ -1,8 +1,13 @@
 import { Button, Flex, Typography } from 'antd'
+import Genre from '../entities/Genre'
 import useGenres from '../hooks/useGenres'
 import GenreListSkeleton from './GenreListSkeleton'
 
-const GenreList = () => {
+interface Props {
+  onSelectGenre: (genre: Genre) => void
+}
+
+const GenreList = ({ onSelectGenre }: Props) => {
   const { genres, isLoading } = useGenres()
 
   return (
@@ -19,6 +24,7 @@ const GenreList = () => {
             shape="round"
             variant="outlined"
             key={genre.id}
+            onClick={() => onSelectGenre(genre)}
           >
             {genre.name}
           </Button>
