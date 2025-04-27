@@ -1,12 +1,16 @@
 import { Button, Flex, Typography } from 'antd'
 import useGenres from '../hooks/useGenres'
+import GenreListSkeleton from './GenreListSkeleton'
 
 const GenreList = () => {
-  const { genres } = useGenres()
+  const { genres, isLoading } = useGenres()
 
   return (
     <>
       <Typography.Title level={3}>Genre</Typography.Title>
+
+      {isLoading && <GenreListSkeleton />}
+
       <Flex wrap gap="small">
         {genres.map((genre) => (
           <Button
