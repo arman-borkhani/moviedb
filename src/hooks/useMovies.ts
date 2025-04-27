@@ -10,7 +10,7 @@ interface FetchMoviesResponse {
 
 const useMovies = () => {
   const { data, error, isLoading } =
-    useData<FetchMoviesResponse>('/movie/popular')
+    useData<FetchMoviesResponse>('/discover/movie')
 
   return {
     movies: data?.results || [],
