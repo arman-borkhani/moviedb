@@ -4,10 +4,11 @@ import useGenres from '../hooks/useGenres'
 import GenreListSkeleton from './GenreListSkeleton'
 
 interface Props {
-  onSelectGenre: (genre: Genre) => void
+  onSelectGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null;
 }
 
-const GenreList = ({ onSelectGenre }: Props) => {
+const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
   const { genres, isLoading } = useGenres()
 
   return (
@@ -19,10 +20,10 @@ const GenreList = ({ onSelectGenre }: Props) => {
       <Flex wrap gap="small">
         {genres.map((genre) => (
           <Button
-            ghost
             size="middle"
             shape="round"
-            variant="outlined"
+            color={genre.id === selectedGenre?.id ? 'primary': 'default'}
+            variant={genre.id === selectedGenre?.id ? 'solid': 'outlined'}
             key={genre.id}
             onClick={() => onSelectGenre(genre)}
           >
