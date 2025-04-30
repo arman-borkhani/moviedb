@@ -1,10 +1,11 @@
-import { ConfigProvider, Layout } from 'antd'
+import { ConfigProvider, Layout, Space } from 'antd'
 import { useState } from 'react'
 import GenreList from './components/GenreList'
 import MovieGrid from './components/MovieGrid'
 import Navbar from './components/Navbar'
 import MovieQuery from './entities/MovieQuery'
 import themeConfig from './themeConfig'
+import SortSelector from './components/SortSelector'
 
 const App = () => {
   const [themeMode, setThemeMode] = useState<'light' | 'dark'>('light')
@@ -22,12 +23,16 @@ const App = () => {
           <div className="container">
             <div className="flex flex-col lg:flex-row gap-5">
               <div className="lg:w-56 shrink-0">
-                <GenreList
-                  selectedGenre={movieQuery.genre}
-                  onSelectGenre={(genre) =>
-                    setMovieQuery({ ...movieQuery, genre })
-                  }
-                />
+                <Space direction="vertical" size="large">
+                  <SortSelector />
+
+                  <GenreList
+                    selectedGenre={movieQuery.genre}
+                    onSelectGenre={(genre) =>
+                      setMovieQuery({ ...movieQuery, genre })
+                    }
+                  />
+                </Space>
               </div>
               <div>
                 <MovieGrid movieQuery={movieQuery} />
