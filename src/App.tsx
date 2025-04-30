@@ -3,12 +3,12 @@ import { useState } from 'react'
 import GenreList from './components/GenreList'
 import MovieGrid from './components/MovieGrid'
 import Navbar from './components/Navbar'
-import Genre from './entities/Genre'
+import MovieQuery from './entities/MovieQuery'
 import themeConfig from './themeConfig'
 
 const App = () => {
   const [themeMode, setThemeMode] = useState<'light' | 'dark'>('light')
-  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null)
+  const [movieQuery, setMovieQuery] = useState<MovieQuery>({} as MovieQuery)
 
   const changeTheme = (value: boolean) => {
     setThemeMode(value ? 'dark' : 'light')
@@ -22,10 +22,15 @@ const App = () => {
           <div className="container">
             <div className="flex flex-col lg:flex-row gap-5">
               <div className="lg:w-56 shrink-0">
-                <GenreList selectedGenre={selectedGenre} onSelectGenre={(genre) => setSelectedGenre(genre)} />
+                <GenreList
+                  selectedGenre={movieQuery.genre}
+                  onSelectGenre={(genre) =>
+                    setMovieQuery({ ...movieQuery, genre })
+                  }
+                />
               </div>
               <div>
-                <MovieGrid selectedGenre={selectedGenre} />
+                <MovieGrid movieQuery={movieQuery} />
               </div>
             </div>
           </div>

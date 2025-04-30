@@ -1,15 +1,15 @@
 import { Typography } from 'antd'
-import Genre from '../entities/Genre'
+import MovieQuery from '../entities/MovieQuery'
 import useMovies from '../hooks/useMovies'
 import MovieCard from './MovieCard'
 import MovieCardSkeleton from './MovieCardSkeleton'
 
 interface Props {
-  selectedGenre: Genre | null
+  movieQuery: MovieQuery
 }
 
-const MovieGrid = ({ selectedGenre }: Props) => {
-  const { movies, error, isLoading } = useMovies(selectedGenre)
+const MovieGrid = ({ movieQuery }: Props) => {
+  const { movies, error, isLoading } = useMovies(movieQuery)
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   return (

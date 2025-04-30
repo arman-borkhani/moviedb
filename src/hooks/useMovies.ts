@@ -1,5 +1,5 @@
-import Genre from '../entities/Genre'
 import Movie from '../entities/Movie'
+import MovieQuery from '../entities/MovieQuery'
 import useData from './useData'
 
 interface FetchMoviesResponse {
@@ -9,11 +9,11 @@ interface FetchMoviesResponse {
   total_results: number
 }
 
-const useMovies = (selectedGenre: Genre | null) => {
+const useMovies = (movieQuery: MovieQuery) => {
   const { data, error, isLoading } = useData<FetchMoviesResponse>(
     '/discover/movie',
-    { params: { with_genres: selectedGenre?.id } },
-    [selectedGenre?.id],
+    { params: { with_genres: movieQuery.genre?.id } },
+    [movieQuery],
   )
 
   return {
