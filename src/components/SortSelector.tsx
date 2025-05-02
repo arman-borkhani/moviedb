@@ -25,9 +25,7 @@ const SortSelector = ({ onSelectSortOrder }: Props) => {
           {
             value: 'primary_release_date.asc',
             label: 'Release Date Ascending',
-          },
-          { value: 'title.desc', label: 'Title (A-Z)' },
-          { value: 'title.asc', label: 'Title (Z-A)' },
+          }
         ]}
       />
     </>
