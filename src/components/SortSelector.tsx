@@ -1,11 +1,16 @@
 import { Select, Typography } from 'antd'
 
-const SortSelector = () => {
+interface Props {
+  onSelectSortOrder: (sortOrder: string) => void
+}
+
+const SortSelector = ({ onSelectSortOrder }: Props) => {
   return (
     <>
       <Typography.Title level={3}>Sort Results By</Typography.Title>
 
       <Select
+        onChange={(value) => onSelectSortOrder(value)}
         defaultValue="popularity.desc"
         style={{ width: 200 }}
         options={[

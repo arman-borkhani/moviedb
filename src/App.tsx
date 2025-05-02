@@ -24,7 +24,11 @@ const App = () => {
             <div className="flex flex-col lg:flex-row gap-5">
               <div className="lg:w-56 shrink-0">
                 <Space direction="vertical" size="large">
-                  <SortSelector />
+                  <SortSelector
+                    onSelectSortOrder={(sortOrder) =>
+                      setMovieQuery({ ...movieQuery, sortOrder })
+                    }
+                  />
 
                   <GenreList
                     selectedGenre={movieQuery.genre}

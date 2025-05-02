@@ -12,7 +12,12 @@ interface FetchMoviesResponse {
 const useMovies = (movieQuery: MovieQuery) => {
   const { data, error, isLoading } = useData<FetchMoviesResponse>(
     '/discover/movie',
-    { params: { with_genres: movieQuery.genre?.id } },
+    {
+      params: {
+        with_genres: movieQuery.genre?.id,
+        sort_by: movieQuery.sortOrder,
+      },
+    },
     [movieQuery],
   )
 
