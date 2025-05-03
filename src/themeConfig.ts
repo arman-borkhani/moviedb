@@ -4,10 +4,6 @@ const themeConfig = (themeMode: 'light' | 'dark') => {
   return {
     algorithm:
       themeMode === 'light' ? theme.defaultAlgorithm : theme.darkAlgorithm,
-
-    token: {
-      borderRadius: 2,
-    },
     components: {
       Layout: {
         headerPadding: '0',
