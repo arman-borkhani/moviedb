@@ -2,6 +2,7 @@ import { StarFilled } from '@ant-design/icons'
 import { Card } from 'antd'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/blur.css'
+import noImage from '../assets/no-image-placeholder.svg'
 import Movie from '../entities/Movie'
 
 interface Props {
@@ -17,19 +18,25 @@ const MovieCard = ({ movie }: Props) => {
       cover={
         <LazyLoadImage
           effect="blur"
-          placeholderSrc={posterPlaceholderPath}
-          src={posterPath}
+          placeholderSrc={movie.poster_path ? posterPlaceholderPath : undefined}
+          src={movie.poster_path ? posterPath : noImage}
           className="w-full lg:h-80 object-cover rounded-tr-xl rounded-tl-xl"
         />
       }
     >
-      <Card.Meta title={movie.title} description={
-        <>
-          <StarFilled className="mr-1 text-base" style={{ color: '#f5c518' }} />
-          <span className="text-base">{movie.vote_average.toFixed(1)}</span>
-          <span className="text-xs">/10</span>
-        </>
-      }></Card.Meta>
+      <Card.Meta
+        title={movie.title}
+        description={
+          <>
+            <StarFilled
+              className="mr-1 text-base"
+              style={{ color: '#f5c518' }}
+            />
+            <span className="text-base">{movie.vote_average.toFixed(1)}</span>
+            <span className="text-xs">/10</span>
+          </>
+        }
+      ></Card.Meta>
     </Card>
   )
 }
