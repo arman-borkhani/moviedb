@@ -38,7 +38,7 @@ const App = () => {
                   />
                 </Space>
               </div>
-              <div>
+              <div className='grow'>
                 <MovieGrid movieQuery={movieQuery} />
               </div>
             </div>
