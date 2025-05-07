@@ -4,8 +4,8 @@ import useGenres from '../hooks/useGenres'
 import GenreListSkeleton from './GenreListSkeleton'
 
 interface Props {
-  onSelectGenre: (genre: Genre) => void;
-  selectedGenre: Genre | null;
+  onSelectGenre: (genre: Genre) => void
+  selectedGenre: Genre | null
 }
 
 const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
@@ -22,8 +22,8 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
           <Button
             size="middle"
             shape="round"
-            color={genre.id === selectedGenre?.id ? 'primary': 'default'}
-            variant={genre.id === selectedGenre?.id ? 'solid': 'outlined'}
+            color={genre.id === selectedGenre?.id ? 'primary' : 'default'}
+            variant={genre.id === selectedGenre?.id ? 'solid' : 'outlined'}
             key={genre.id}
             onClick={() => onSelectGenre(genre)}
           >
