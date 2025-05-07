@@ -12,7 +12,7 @@ const MovieGrid = ({ movieQuery }: Props) => {
   const { movies, error, isLoading } = useMovies(movieQuery)
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-  if (error) return <Alert message={error} type="error" />
+  if (error) return <Alert message={error.message} type="error" />
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-5">
