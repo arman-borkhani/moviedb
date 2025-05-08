@@ -1,7 +1,9 @@
 import { useQuery } from 'react-query'
 import Movie from '../entities/Movie'
 import MovieQuery from '../entities/MovieQuery'
-import apiClient from '../services/api-client'
+import APIClient from '../services/api-client'
+
+const apiClient = new APIClient<FetchMoviesResponse>('/discover/movie')
 
 interface FetchMoviesResponse {
   results: Movie[]
@@ -14,14 +16,12 @@ const useMovies = (movieQuery: MovieQuery) => {
   const { data, error, isLoading } = useQuery<FetchMoviesResponse, Error>({
     queryKey: ['movies', movieQuery],
     queryFn: () =>
-      apiClient
-        .get<FetchMoviesResponse>('/discover/movie', {
-          params: {
-            with_genres: movieQuery.genre?.id,
-            sort_by: movieQuery.sortOrder,
-          },
-        })
-        .then((res) => res.data),
+      apiClient.getAll({
+        params: {
+          with_genres: movieQuery.genre?.id,
+          sort_by: movieQuery.sortOrder,
+        },
+      }),
     staleTime: 24 * 60 * 60 * 1000, // 24h
   })
 
