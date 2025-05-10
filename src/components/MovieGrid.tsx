@@ -1,5 +1,6 @@
-import { Alert, Button } from 'antd'
+import { Alert, Flex, Spin } from 'antd'
 import React from 'react'
+import InfiniteScroll from 'react-infinite-scroll-component'
 import MovieQuery from '../entities/MovieQuery'
 import useMovies from '../hooks/useMovies'
 import MovieCard from './MovieCard'
@@ -14,7 +15,6 @@ const MovieGrid = ({ movieQuery }: Props) => {
     movies,
     error,
     isLoading,
-    isFetchingNextPage,
     fetchNextPage,
     hasNextPage,
   } = useMovies(movieQuery)
@@ -22,8 +22,23 @@ const MovieGrid = ({ movieQuery }: Props) => {
 
   if (error) return <Alert message={error.message} type="error" />
 
+  const fetchedMoviesCount = movies.reduce(
+    (total, page) => total + page.results.length,
+    0,
+  )
+
   return (
-    <>
+    <InfiniteScroll
+      dataLength={fetchedMoviesCount}
+      hasMore={!!hasNextPage}
+      next={() => fetchNextPage()}
+      loader={
+        <Flex justify="center" align="center" style={{ marginTop: '2rem' }}>
+          <Spin tip="Loading" size="large"></Spin>
+        </Flex>
+      }
+      style={{ overflow: 'initial' }}
+    >
       <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-5">
         {isLoading &&
           skeletons.map((skeleton) => (
@@ -41,12 +56,7 @@ const MovieGrid = ({ movieQuery }: Props) => {
           </React.Fragment>
         ))}
       </div>
-      {hasNextPage && (
-        <Button onClick={() => fetchNextPage()}>
-          {isFetchingNextPage ? 'Loading...' : 'Load More'}
-        </Button>
-      )}
-    </>
+    </InfiniteScroll>
   )
 }
 
