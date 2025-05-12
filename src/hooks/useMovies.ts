@@ -1,3 +1,4 @@
+import ms from 'ms'
 import { useInfiniteQuery } from 'react-query'
 import Movie from '../entities/Movie'
 import MovieQuery from '../entities/MovieQuery'
@@ -31,7 +32,7 @@ const useMovies = (movieQuery: MovieQuery) => {
     getNextPageParam: (lastPage, allPages) => {
       return lastPage.results.length > 0 ? allPages.length + 1 : undefined
     },
-    staleTime: 24 * 60 * 60 * 1000, // 24h
+    staleTime: ms('24h'),
   })
 
   return {
