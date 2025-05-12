@@ -31,14 +31,14 @@ const App = () => {
                   />
 
                   <GenreList
-                    selectedGenre={movieQuery.genre}
+                    selectedGenreId={movieQuery.genreId}
                     onSelectGenre={(genre) =>
-                      setMovieQuery({ ...movieQuery, genre })
+                      setMovieQuery({ ...movieQuery, genreId: genre.id })
                     }
                   />
                 </Space>
               </div>
-              <div className='grow'>
+              <div className="grow">
                 <MovieGrid movieQuery={movieQuery} />
               </div>
             </div>

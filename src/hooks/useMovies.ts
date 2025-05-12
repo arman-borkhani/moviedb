@@ -23,7 +23,7 @@ const useMovies = (movieQuery: MovieQuery) => {
     queryFn: ({ pageParam = 1 }) =>
       apiClient.getAll({
         params: {
-          with_genres: movieQuery.genre?.id,
+          with_genres: movieQuery.genreId,
           sort_by: movieQuery.sortOrder,
           page: pageParam,
         },
