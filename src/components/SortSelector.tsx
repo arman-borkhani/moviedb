@@ -1,16 +1,15 @@
 import { Select, Typography } from 'antd'
+import useMovieQueryStore from '../store/useMovieQueryStore'
 
-interface Props {
-  onSelectSortOrder: (sortOrder: string) => void
-}
+const SortSelector = () => {
+  const setSortOrder = useMovieQueryStore((s) => s.setSortOrder)
 
-const SortSelector = ({ onSelectSortOrder }: Props) => {
   return (
     <>
       <Typography.Title level={3}>Sort Results By</Typography.Title>
 
       <Select
-        onChange={(value) => onSelectSortOrder(value)}
+        onChange={(value) => setSortOrder(value)}
         defaultValue="popularity.desc"
         style={{ width: 200 }}
         options={[
@@ -25,7 +24,7 @@ const SortSelector = ({ onSelectSortOrder }: Props) => {
           {
             value: 'primary_release_date.asc',
             label: 'Release Date Ascending',
-          }
+          },
         ]}
       />
     </>

@@ -1,23 +1,12 @@
 import { Alert, Flex, Spin } from 'antd'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import MovieQuery from '../entities/MovieQuery'
 import useMovies from '../hooks/useMovies'
 import MovieCard from './MovieCard'
 import MovieCardSkeleton from './MovieCardSkeleton'
 
-interface Props {
-  movieQuery: MovieQuery
-}
-
-const MovieGrid = ({ movieQuery }: Props) => {
-  const {
-    movies,
-    error,
-    isLoading,
-    fetchNextPage,
-    hasNextPage,
-  } = useMovies(movieQuery)
+const MovieGrid = () => {
+  const { movies, error, isLoading, fetchNextPage, hasNextPage } = useMovies()
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   if (error) return <Alert message={error.message} type="error" />

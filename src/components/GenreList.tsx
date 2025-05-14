@@ -1,15 +1,12 @@
 import { Button, Flex, Typography } from 'antd'
-import Genre from '../entities/Genre'
 import useGenres from '../hooks/useGenres'
+import useMovieQueryStore from '../store/useMovieQueryStore'
 import GenreListSkeleton from './GenreListSkeleton'
 
-interface Props {
-  onSelectGenre: (genre: Genre) => void
-  selectedGenreId?: number
-}
-
-const GenreList = ({ selectedGenreId, onSelectGenre }: Props) => {
+const GenreList = () => {
   const { genres, isLoading } = useGenres()
+  const selectedGenreId = useMovieQueryStore((s) => s.movieQuery.genreId)
+  const setSelectedGenreId = useMovieQueryStore((s) => s.setGenreId)
 
   return (
     <>
@@ -25,7 +22,7 @@ const GenreList = ({ selectedGenreId, onSelectGenre }: Props) => {
             color={genre.id === selectedGenreId ? 'primary' : 'default'}
             variant={genre.id === selectedGenreId ? 'solid' : 'outlined'}
             key={genre.id}
-            onClick={() => onSelectGenre(genre)}
+            onClick={() => setSelectedGenreId(genre.id)}
           >
             {genre.name}
           </Button>

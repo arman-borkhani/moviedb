@@ -1,8 +1,8 @@
 import ms from 'ms'
 import { useInfiniteQuery } from 'react-query'
 import Movie from '../entities/Movie'
-import MovieQuery from '../entities/MovieQuery'
 import APIClient from '../services/api-client'
+import useMovieQueryStore from '../store/useMovieQueryStore'
 
 const apiClient = new APIClient<FetchMoviesResponse>('/discover/movie')
 
@@ -11,7 +11,9 @@ interface FetchMoviesResponse {
   page: number
 }
 
-const useMovies = (movieQuery: MovieQuery) => {
+const useMovies = () => {
+  const movieQuery = useMovieQueryStore((s) => s.movieQuery)
+
   const {
     data,
     error,
