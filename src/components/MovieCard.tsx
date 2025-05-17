@@ -20,7 +20,7 @@ const MovieCard = ({ movie }: Props) => {
           effect="blur"
           placeholderSrc={movie.poster_path ? posterPlaceholderPath : undefined}
           src={movie.poster_path ? posterPath : noImage}
-          className="w-full lg:h-80 object-cover rounded-tr-xl rounded-tl-xl"
+          className="w-full lg:h-72 object-cover rounded-tr-xl rounded-tl-xl"
         />
       }
     >

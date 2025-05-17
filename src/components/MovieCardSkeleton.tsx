@@ -8,7 +8,7 @@ const MovieCardSkeleton = () => {
         <Skeleton.Image
           style={{
             width: '100%',
-            height: 320,
+            height: '18rem',
             borderTopLeftRadius: '0.75rem',
             borderTopRightRadius: '0.75rem',
           }}
