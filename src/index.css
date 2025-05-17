@@ -5,3 +5,22 @@
   padding-inline: 1rem;
   max-width: 1320px;
 }
+
+/* Skeleton animation */
+
+.ant-skeleton-image,
+.ant-skeleton-input {
+  animation: pulse 1.5s infinite ease-in-out !important;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
