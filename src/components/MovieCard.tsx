@@ -2,6 +2,7 @@ import { StarFilled } from '@ant-design/icons'
 import { Card } from 'antd'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/blur.css'
+import { Link } from 'react-router'
 import noImage from '../assets/no-image-placeholder.svg'
 import Movie from '../entities/Movie'
 
@@ -23,6 +24,7 @@ const MovieCard = ({ movie }: Props) => {
           className="w-full lg:h-72 object-cover rounded-tr-xl rounded-tl-xl"
         />
       }
+      hoverable
     >
       <Card.Meta
         title={movie.title}
@@ -37,6 +39,7 @@ const MovieCard = ({ movie }: Props) => {
           </>
         }
       ></Card.Meta>
+      <Link className="absolute inset-0" to={'movies/' + movie.id}></Link>
     </Card>
   )
 }
