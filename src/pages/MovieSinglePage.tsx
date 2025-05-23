@@ -1,4 +1,4 @@
-import { Spin, Typography } from 'antd'
+import { Flex, Spin, Typography } from 'antd'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/blur.css'
 import { useParams } from 'react-router'
@@ -20,6 +20,8 @@ const MovieSinglePage = () => {
 
   const posterPlaceholderPath = `https://image.tmdb.org/t/p/w200/${movie.poster_path}`
   const posterPath = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+  const releaseDate = new Date(movie.release_date)
+  const runTime = movie.runtime
 
   return (
     <div className="container">
@@ -36,8 +38,38 @@ const MovieSinglePage = () => {
             />
           </figure>
         </div>
+
         <div className="sm:col-span-9">
-          <Typography.Title level={1}>{movie.title}</Typography.Title>
+          <Typography.Title level={1} style={{ marginBottom: '0.25rem' }}>
+            {movie.title}
+
+            <span className="opacity-80 font-medium">{` (${releaseDate.getFullYear()})`}</span>
+          </Typography.Title>
+
+          <Flex wrap align="center" gap="small">
+            <div>
+              {releaseDate.toLocaleDateString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric',
+              })}
+            </div>
+
+            <div className="w-1 h-1 rounded-full bg-current"></div>
+
+            <div>
+              {movie.genres.map((genre, index) => (
+                <span key={genre.id}>
+                  {genre.name}
+                  {index < movie.genres.length - 1 && ', '}
+                </span>
+              ))}
+            </div>
+
+            <div className="w-1 h-1 rounded-full bg-current"></div>
+
+            <div>{`${Math.floor(runTime / 60)}h ${runTime % 60}m`}</div>
+          </Flex>
         </div>
       </div>
     </div>
