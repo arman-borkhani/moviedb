@@ -9,4 +9,5 @@ export default interface Movie {
   release_date: string
   runtime: number
   genres: Genre[]
+  overview: string
 }

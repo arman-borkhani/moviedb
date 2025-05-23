@@ -1,4 +1,4 @@
-import { Flex, Spin, Typography } from 'antd'
+import { Flex, Space, Spin, Typography } from 'antd'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/blur.css'
 import { useParams } from 'react-router'
@@ -46,7 +46,12 @@ const MovieSinglePage = () => {
             <span className="opacity-80 font-medium">{` (${releaseDate.getFullYear()})`}</span>
           </Typography.Title>
 
-          <Flex wrap align="center" gap="small">
+          <Flex
+            wrap
+            align="center"
+            gap="small"
+            style={{ marginBottom: '2rem' }}
+          >
             <div>
               {releaseDate.toLocaleDateString('en-US', {
                 month: 'short',
@@ -70,6 +75,18 @@ const MovieSinglePage = () => {
 
             <div>{`${Math.floor(runTime / 60)}h ${runTime % 60}m`}</div>
           </Flex>
+
+          {movie.overview && (
+            <Space direction="vertical" size="middle" className="mb-8">
+              <Typography.Title level={5} style={{ margin: 0 }}>
+                Overview
+              </Typography.Title>
+
+              <Typography.Text style={{ fontSize: '1rem' }}>
+                {movie.overview}
+              </Typography.Text>
+            </Space>
+          )}
         </div>
       </div>
     </div>
