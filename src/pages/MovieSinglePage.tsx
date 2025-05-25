@@ -1,11 +1,12 @@
-import { Space, Spin, Typography } from 'antd'
+import { Spin } from 'antd'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/blur.css'
 import { useParams } from 'react-router'
 import noImage from '../assets/no-image-placeholder.svg'
 import MovieAttributes from '../components/MovieAttributes'
-import useMovie from '../hooks/useMovie'
 import MovieHeading from '../components/MovieHeading'
+import MovieOverview from '../components/MovieOverview'
+import useMovie from '../hooks/useMovie'
 
 const MovieSinglePage = () => {
   const { id } = useParams()
@@ -42,17 +43,7 @@ const MovieSinglePage = () => {
         <div className="sm:col-span-9">
           <MovieHeading movie={movie} />
 
-          {movie.overview && (
-            <Space direction="vertical" size="middle" className="mb-8">
-              <Typography.Title level={5} style={{ margin: 0 }}>
-                Overview
-              </Typography.Title>
-
-              <Typography.Text style={{ fontSize: '1rem' }}>
-                {movie.overview}
-              </Typography.Text>
-            </Space>
-          )}
+          <MovieOverview movieOverview={movie.overview}  />
 
           <MovieAttributes movie={movie} />
         </div>
