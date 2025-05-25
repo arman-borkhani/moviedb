@@ -10,4 +10,8 @@ export default interface Movie {
   runtime: number
   genres: Genre[]
   overview: string
+  budget: number
+  status: string
+  revenue: number
+  original_language: string
 }

@@ -3,6 +3,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/blur.css'
 import { useParams } from 'react-router'
 import noImage from '../assets/no-image-placeholder.svg'
+import MovieAttributes from '../components/MovieAttributes'
 import useMovie from '../hooks/useMovie'
 
 const MovieSinglePage = () => {
@@ -87,6 +88,8 @@ const MovieSinglePage = () => {
               </Typography.Text>
             </Space>
           )}
+
+          <MovieAttributes movie={movie} />
         </div>
       </div>
     </div>
