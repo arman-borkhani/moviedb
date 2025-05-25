@@ -26,20 +26,28 @@ const MovieHeading = ({ movie }: Porps) => {
           })}
         </div>
 
-        <div className="w-1 h-1 rounded-full bg-current"></div>
+        {movie.genres.length > 0 && (
+          <>
+            <div className="w-1 h-1 rounded-full bg-current"></div>
 
-        <div>
-          {movie.genres.map((genre, index) => (
-            <span key={genre.id}>
-              {genre.name}
-              {index < movie.genres.length - 1 && ', '}
-            </span>
-          ))}
-        </div>
+            <div>
+              {movie.genres.map((genre, index) => (
+                <span key={genre.id}>
+                  {genre.name}
+                  {index < movie.genres.length - 1 && ', '}
+                </span>
+              ))}
+            </div>
+          </>
+        )}
 
-        <div className="w-1 h-1 rounded-full bg-current"></div>
+        {runTime > 0 && (
+          <>
+            <div className="w-1 h-1 rounded-full bg-current"></div>
 
-        <div>{`${Math.floor(runTime / 60)}h ${runTime % 60}m`}</div>
+            <div>{`${Math.floor(runTime / 60)}h ${runTime % 60}m`}</div>
+          </>
+        )}
       </Flex>
     </>
   )
