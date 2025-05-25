@@ -1,11 +1,10 @@
 import { Spin } from 'antd'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/blur.css'
 import { useParams } from 'react-router'
-import noImage from '../assets/no-image-placeholder.svg'
 import MovieAttributes from '../components/MovieAttributes'
 import MovieHeading from '../components/MovieHeading'
 import MovieOverview from '../components/MovieOverview'
+import MoviePoster from '../components/MoviePoster'
 import useMovie from '../hooks/useMovie'
 
 const MovieSinglePage = () => {
@@ -21,29 +20,17 @@ const MovieSinglePage = () => {
 
   if (error || !movie) throw error
 
-  const posterPlaceholderPath = `https://image.tmdb.org/t/p/w200/${movie.poster_path}`
-  const posterPath = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-
   return (
     <div className="container">
       <div className="grid sm:grid-cols-12 gap-4 lg:gap-10">
         <div className="sm:col-span-3">
-          <figure className="[&_*]:w-full">
-            <LazyLoadImage
-              effect="blur"
-              placeholderSrc={
-                movie.poster_path ? posterPlaceholderPath : undefined
-              }
-              src={movie.poster_path ? posterPath : noImage}
-              className="rounded-lg"
-            />
-          </figure>
+          <MoviePoster posterPath={movie.poster_path} />
         </div>
 
         <div className="sm:col-span-9">
           <MovieHeading movie={movie} />
 
-          <MovieOverview movieOverview={movie.overview}  />
+          <MovieOverview movieOverview={movie.overview} />
 
           <MovieAttributes movie={movie} />
         </div>
