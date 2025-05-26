@@ -1,22 +1,17 @@
-import { Spin } from 'antd'
 import 'react-lazy-load-image-component/src/effects/blur.css'
 import { useParams } from 'react-router'
 import MovieAttributes from '../components/MovieAttributes'
 import MovieHeading from '../components/MovieHeading'
 import MovieOverview from '../components/MovieOverview'
 import MoviePoster from '../components/MoviePoster'
+import MovieSinglePageSkeleton from '../components/MovieSinglePageSkeleton'
 import useMovie from '../hooks/useMovie'
 
 const MovieSinglePage = () => {
   const { id } = useParams()
   const { movie, isLoading, error } = useMovie(id!)
 
-  if (isLoading)
-    return (
-      <div className="container">
-        <Spin />
-      </div>
-    )
+  if (isLoading) return <MovieSinglePageSkeleton />
 
   if (error || !movie) throw error
 

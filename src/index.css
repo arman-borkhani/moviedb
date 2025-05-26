@@ -8,8 +8,9 @@
 
 /* Skeleton animation */
 
-.ant-skeleton-image,
-.ant-skeleton-input {
+.ant-skeleton-active .ant-skeleton-image,
+.ant-skeleton-active .ant-skeleton-input,
+.ant-skeleton-active .ant-skeleton-paragraph > li {
   animation: pulse 1.5s infinite ease-in-out !important;
 }
 
