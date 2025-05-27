@@ -1,5 +1,5 @@
 import { Descriptions } from 'antd'
-import Movie from '../entities/Movie'
+import Movie from '../../entities/Movie'
 
 interface Props {
   movie: Movie

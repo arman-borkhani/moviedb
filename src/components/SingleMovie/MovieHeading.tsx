@@ -1,5 +1,5 @@
 import { Flex, Typography } from 'antd'
-import Movie from '../entities/Movie'
+import Movie from '../../entities/Movie'
 
 interface Porps {
   movie: Movie
