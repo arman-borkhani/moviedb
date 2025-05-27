@@ -5,7 +5,7 @@ const MovieSinglePageSkeleton = () => {
     <div className="container">
       <div className="grid md:grid-cols-12 gap-4 lg:gap-10">
         <div className="md:col-span-3">
-          <Skeleton.Image active className="w-full! h-96!" />
+          <Skeleton.Image active className="w-full! h-110!" />
         </div>
 
         <div className="md:col-span-9">
