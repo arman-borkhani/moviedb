@@ -10,21 +10,25 @@ const MovieHeading = ({ movie }: Porps) => {
   const runTime = movie.runtime
 
   return (
-    <>
-      <Typography.Title level={1} style={{ marginBottom: '0.25rem' }}>
+    <Flex vertical gap={4} className="mb-8!">
+      <Typography.Title level={1} className="m-0!">
         {movie.title}
 
-        <span className="opacity-80 font-medium">{` (${releaseDate.getFullYear()})`}</span>
+        {movie.release_date && (
+          <span className="opacity-80 font-medium">{` (${releaseDate.getFullYear()})`}</span>
+        )}
       </Typography.Title>
 
-      <Flex wrap align="center" gap="small" style={{ marginBottom: '2rem' }}>
-        <div>
-          {releaseDate.toLocaleDateString('en-US', {
-            month: 'short',
-            day: 'numeric',
-            year: 'numeric',
-          })}
-        </div>
+      <Flex wrap align="center" gap="small">
+        {movie.release_date && (
+          <div>
+            {releaseDate.toLocaleDateString('en-US', {
+              month: 'short',
+              day: 'numeric',
+              year: 'numeric',
+            })}
+          </div>
+        )}
 
         {movie.genres.length > 0 && (
           <>
@@ -49,7 +53,7 @@ const MovieHeading = ({ movie }: Porps) => {
           </>
         )}
       </Flex>
-    </>
+    </Flex>
   )
 }
 
