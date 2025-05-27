@@ -13,6 +13,8 @@ interface Props {
 const MovieCard = ({ movie }: Props) => {
   const posterPlaceholderPath = `https://image.tmdb.org/t/p/w200/${movie.poster_path}`
   const posterPath = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+  const releaseDate = new Date(movie.release_date)
+  const movieTitle = movie.release_date ? `${movie.title} (${releaseDate.getFullYear()})` : movie.title
 
   return (
     <Card
@@ -27,7 +29,7 @@ const MovieCard = ({ movie }: Props) => {
       hoverable
     >
       <Card.Meta
-        title={movie.title}
+        title={movieTitle}
         description={
           <>
             <StarFilled
