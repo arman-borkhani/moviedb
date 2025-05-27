@@ -16,7 +16,7 @@ const MoviePoster = ({ posterPath }: Props) => {
         effect="blur"
         placeholderSrc={posterPath ? placeholderPath : undefined}
         src={posterPath ? path : noImage}
-        className="rounded-lg min-h-96 object-cover"
+        className="rounded-lg min-h-110 object-cover"
       />
     </figure>
   )
