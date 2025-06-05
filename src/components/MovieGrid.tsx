@@ -23,7 +23,7 @@ const MovieGrid = () => {
       next={() => fetchNextPage()}
       loader={
         <Flex justify="center" align="center" style={{ marginTop: '2rem' }}>
-          <Spin tip="Loading" size="large"></Spin>
+          <Spin size="large"></Spin>
         </Flex>
       }
       style={{ overflow: 'initial' }}
