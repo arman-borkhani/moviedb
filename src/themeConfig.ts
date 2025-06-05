@@ -6,7 +6,8 @@ const themeConfig = (themeMode: 'light' | 'dark') => {
       themeMode === 'light' ? theme.defaultAlgorithm : theme.darkAlgorithm,
     components: {
       Layout: {
-        headerPadding: '0',
+        headerHeight: 'auto',
+        headerPadding: '16px 0',
         headerBg: themeMode === 'light' ? '#fff' : '#001529',
       },
       Card: {
