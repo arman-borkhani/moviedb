@@ -41,7 +41,7 @@ const MovieCard = ({ movie }: Props) => {
           </>
         }
       ></Card.Meta>
-      <Link className="absolute inset-0" to={'movies/' + movie.id}></Link>
+      <Link className="absolute inset-0" to={'/movies/' + movie.id}></Link>
     </Card>
   )
 }
