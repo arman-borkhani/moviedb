@@ -1,50 +1,26 @@
-# React + TypeScript + Vite
+# 🎬 Movie Discovery App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A **React-based web application** that helps users explore and discover new movies tailored to their interests. Leveraging the [TMDB](https://www.themoviedb.org) API, the app features search, filter, and sorting capabilities to browse a vast movie database.
 
-Currently, two official plugins are available:
+Check out the live demo of the app at [https://moviedb-ecru.vercel.app](https://moviedb-ecru.vercel.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Moviedb Project Screenshot](screenshot.png)
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **React** – Frontend framework
+- **Ant Design** – UI components and styling
+- **React Router** – Client-side navigation
+- **Zustand** – Lightweight state management
+- **Vite** – Development build tool
+- **TMDB API** – Movie data source
 
-- Configure the top-level `parserOptions` property like this:
+## 🚀 Installation & Setup
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+Follow these steps to run the project locally:
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+1. [Clone the repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) to your local machine.
+2. Navigate to the project directory and install the dependencies by running `npm install`.
+3. Go to [themoviedb.org](https://www.themoviedb.org), register for a free account, and obtain your API key.
+4. Create a `.env` file in the project's root directory and store your API access token in the VITE_ACCESS_TOKEN environment variable: `VITE_ACCESS_TOKEN="your_api_access_token_should_be_here"`.
+5. Start the development server by running `npm run dev`.
