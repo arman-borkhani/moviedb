@@ -5,6 +5,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css'
 import { Link } from 'react-router'
 import noImage from '../assets/no-image-placeholder.svg'
 import Movie from '../entities/Movie'
+import WatchlistRibbon from './WatchlistRibbon'
 
 interface Props {
   movie: Movie
@@ -14,7 +15,9 @@ const MovieCard = ({ movie }: Props) => {
   const posterPlaceholderPath = `https://image.tmdb.org/t/p/w200/${movie.poster_path}`
   const posterPath = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
   const releaseDate = new Date(movie.release_date)
-  const movieTitle = movie.release_date ? `${movie.title} (${releaseDate.getFullYear()})` : movie.title
+  const movieTitle = movie.release_date
+    ? `${movie.title} (${releaseDate.getFullYear()})`
+    : movie.title
 
   return (
     <Card
@@ -23,7 +26,7 @@ const MovieCard = ({ movie }: Props) => {
           effect="blur"
           placeholderSrc={movie.poster_path ? posterPlaceholderPath : undefined}
           src={movie.poster_path ? posterPath : noImage}
-          className="w-full lg:h-72 object-cover rounded-tr-xl rounded-tl-xl"
+          className="w-full lg:h-72 object-cover rounded-tr-xl"
         />
       }
       hoverable
@@ -42,6 +45,8 @@ const MovieCard = ({ movie }: Props) => {
         }
       ></Card.Meta>
       <Link className="absolute inset-0" to={'/movies/' + movie.id}></Link>
+
+      <WatchlistRibbon movie={movie} />
     </Card>
   )
 }
