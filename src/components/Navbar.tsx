@@ -1,4 +1,5 @@
-import { Layout } from 'antd'
+import { Layout, Typography } from 'antd'
+import { FaRegBookmark } from 'react-icons/fa6'
 import { Link } from 'react-router'
 import logo from '../assets/logo.svg'
 import SearchInput from './SearchInput'
@@ -13,7 +14,14 @@ const Navbar = () => {
             <img src={logo} alt="" className="w-50" />
           </Link>
 
-          <div className="md:order-3">
+          <div className="md:order-3 flex gap-6 items-center">
+            <Link to="/watchlist">
+              <Typography.Text className="flex gap-1 items-center text-lg font-medium">
+                <FaRegBookmark size={16} />
+                Watchlist
+              </Typography.Text>
+            </Link>
+
             <ThemeModeSwitch />
           </div>
 
