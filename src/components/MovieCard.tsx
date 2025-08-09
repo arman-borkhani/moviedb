@@ -46,7 +46,9 @@ const MovieCard = ({ movie }: Props) => {
       ></Card.Meta>
       <Link className="absolute inset-0" to={'/movies/' + movie.id}></Link>
 
-      <WatchlistRibbon movie={movie} />
+      <div className='-top-px -left-px absolute'>
+        <WatchlistRibbon movie={movie} />
+      </div>
     </Card>
   )
 }
