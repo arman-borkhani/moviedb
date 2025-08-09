@@ -20,7 +20,7 @@ const WatchlistRibbon = ({ movie }: Props) => {
       }
     >
       <div
-        className="absolute -top-px -left-px w-8 h-12 hover:[&_.bg-hover]:opacity-50"
+        className="absolute top-0 left-0 w-8 h-12 hover:[&_.bg-hover]:opacity-50 cursor-pointer"
         onClick={() => {
           isInWatchlist ? removeFromWatchlist(movie.id) : addToWatchlist(movie)
         }}
