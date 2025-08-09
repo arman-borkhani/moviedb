@@ -18,11 +18,11 @@ const MovieSinglePage = () => {
   return (
     <div className="container">
       <div className="grid sm:grid-cols-12 gap-4 lg:gap-10">
-        <div className="sm:col-span-3">
+        <div className="sm:col-span-6 md:col-span-5 xl:col-span-3">
           <MoviePoster movie={movie} />
         </div>
 
-        <div className="sm:col-span-9">
+        <div className="sm:col-span-6 md:col-span-7 xl:col-span-9">
           <MovieHeading movie={movie} />
 
           <MovieOverview movieOverview={movie.overview} />
