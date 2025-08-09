@@ -1,23 +1,27 @@
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/blur.css'
 import noImage from '../assets/no-image-placeholder.svg'
+import Movie from '../entities/Movie'
+import WatchlistRibbon from './WatchlistRibbon'
 
 interface Props {
-  posterPath: string | undefined
+  movie: Movie
 }
 
-const MoviePoster = ({ posterPath }: Props) => {
-  const placeholderPath = `https://image.tmdb.org/t/p/w200/${posterPath}`
-  const path = `https://image.tmdb.org/t/p/w500/${posterPath}`
+const MoviePoster = ({ movie }: Props) => {
+  const placeholderPath = `https://image.tmdb.org/t/p/w200/${movie.poster_path}`
+  const path = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
 
   return (
-    <figure className="[&_*]:w-full">
+    <figure className="[&_.lazy-load-image-background]:w-full [&_img]:w-full relative">
       <LazyLoadImage
         effect="blur"
-        placeholderSrc={posterPath ? placeholderPath : undefined}
-        src={posterPath ? path : noImage}
-        className="rounded-lg min-h-110 object-cover"
+        placeholderSrc={movie.poster_path ? placeholderPath : undefined}
+        src={movie.poster_path ? path : noImage}
+        className="rounded-lg rounded-tl-none min-h-110 object-cover"
       />
+
+      <WatchlistRibbon movie={movie} />
     </figure>
   )
 }

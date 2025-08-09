@@ -19,7 +19,7 @@ const MovieSinglePage = () => {
     <div className="container">
       <div className="grid sm:grid-cols-12 gap-4 lg:gap-10">
         <div className="sm:col-span-3">
-          <MoviePoster posterPath={movie.poster_path} />
+          <MoviePoster movie={movie} />
         </div>
 
         <div className="sm:col-span-9">
