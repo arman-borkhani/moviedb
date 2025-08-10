@@ -1,10 +1,7 @@
-import ms from 'ms'
-import { useInfiniteQuery } from 'react-query'
-import Movie from '../entities/Movie'
 import APIClient from '../services/api-client'
-import useMovieQueryStore from '../store/useMovieQueryStore'
-
-const apiClient = new APIClient<FetchMoviesResponse>('/search/movie')
+import Movie from '../entities/Movie'
+import { useQuery } from "react-query";
+import ms from 'ms';
 
 interface FetchMoviesResponse {
   results: Movie[]
@@ -13,42 +10,20 @@ interface FetchMoviesResponse {
   total_results: number
 }
 
-const useSearchMovies = () => {
-  const movieQuery = useMovieQueryStore((s) => s.movieQuery)
+const apiClient = new APIClient<FetchMoviesResponse>('/search/movie')
 
-  const {
-    data,
-    error,
-    isLoading,
-    isFetchingNextPage,
-    fetchNextPage,
-    hasNextPage,
-  } = useInfiniteQuery<FetchMoviesResponse, Error>({
-    queryKey: ['movies', movieQuery.searchText],
-    queryFn: ({ pageParam = 1 }) =>
+const useSearchMovies = (search:string) => (
+  useQuery({
+    queryKey: ["movies", search],
+    queryFn: () =>
       apiClient.getAll({
         params: {
-          query: movieQuery.searchText,
-          page: pageParam,
+          query: search,
         },
       }),
-    getNextPageParam: (lastPage) => {
-      return lastPage.page < lastPage.total_pages
-        ? lastPage.page + 1
-        : undefined
-    },
-    staleTime: ms('24h'),
+    enabled: !!search,
+    staleTime: ms('24h')
   })
-
-  return {
-    movies: data?.pages ?? [],
-    totalResults: data?.pages[0]?.total_results || 0,
-    error,
-    isLoading,
-    isFetchingNextPage,
-    fetchNextPage,
-    hasNextPage,
-  }
-}
+)
 
 export default useSearchMovies
