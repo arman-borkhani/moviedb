@@ -26,10 +26,11 @@ const MovieCard = ({ movie }: Props) => {
           effect="blur"
           placeholderSrc={movie.poster_path ? posterPlaceholderPath : undefined}
           src={movie.poster_path ? posterPath : noImage}
-          className="w-full lg:h-72 object-cover rounded-tr-xl"
+          className="w-full lg:h-72 object-cover rounded-tr-xl block!"
         />
       }
       hoverable
+      className='[&_.ant-card-cover]:leading-none'
     >
       <Card.Meta
         title={movieTitle}

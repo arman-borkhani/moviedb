@@ -11,7 +11,7 @@ const themeConfig = (themeMode: 'light' | 'dark') => {
         headerBg: themeMode === 'light' ? '#fff' : '#001529',
       },
       Card: {
-        bodyPadding: 20,
+        bodyPadding: 16,
         borderRadiusLG: 12,
       },
       Button: {
