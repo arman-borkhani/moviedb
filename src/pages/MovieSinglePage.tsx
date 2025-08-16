@@ -1,10 +1,10 @@
 import 'react-lazy-load-image-component/src/effects/blur.css'
 import { useParams } from 'react-router'
-import MoviePoster from '../components/MoviePoster'
 import MovieSinglePageSkeleton from '../components/MovieSinglePageSkeleton'
 import MovieAttributes from '../components/SingleMovie/MovieAttributes'
 import MovieHeading from '../components/SingleMovie/MovieHeading'
 import MovieOverview from '../components/SingleMovie/MovieOverview'
+import MoviePoster from '../components/SingleMovie/MoviePoster'
 import MovieScore from '../components/SingleMovie/MovieScore'
 import useMovie from '../hooks/useMovie'
 
