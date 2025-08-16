@@ -1,6 +1,6 @@
 # 🎬 Movie Discovery App
 
-A **React-based web application** that helps users explore and discover new movies tailored to their interests. Leveraging the [TMDB](https://www.themoviedb.org) API, the app features search, filter, and sorting capabilities to browse a vast movie database.
+A **React-based web application** that helps users explore and discover new movies tailored to their interests. Leveraging the [TMDB](https://www.themoviedb.org) API, the app features search, filter, and sorting capabilities to browse a vast movie database, along with the ability to add movies to a personalized watchlist.
 
 Check out the live demo of the app at [https://moviedb-ecru.vercel.app](https://moviedb-ecru.vercel.app)
 
