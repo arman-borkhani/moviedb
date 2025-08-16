@@ -1,7 +1,7 @@
 import { StarFilled } from '@ant-design/icons'
 import { Card } from 'antd'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
-import 'react-lazy-load-image-component/src/effects/blur.css'
+import 'react-lazy-load-image-component/src/effects/opacity.css'
 import { Link } from 'react-router'
 import noImage from '../assets/no-image-placeholder.svg'
 import Movie from '../entities/Movie'
@@ -12,7 +12,6 @@ interface Props {
 }
 
 const MovieCard = ({ movie }: Props) => {
-  const posterPlaceholderPath = `https://image.tmdb.org/t/p/w200/${movie.poster_path}`
   const posterPath = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
   const releaseDate = new Date(movie.release_date)
   const movieTitle = movie.release_date
@@ -23,14 +22,13 @@ const MovieCard = ({ movie }: Props) => {
     <Card
       cover={
         <LazyLoadImage
-          effect="blur"
-          placeholderSrc={movie.poster_path ? posterPlaceholderPath : undefined}
+          effect="opacity"
           src={movie.poster_path ? posterPath : noImage}
           className="w-full lg:h-72 object-cover rounded-tr-xl block!"
         />
       }
       hoverable
-      className='[&_.ant-card-cover]:leading-none'
+      className="[&_.ant-card-cover]:leading-none"
     >
       <Card.Meta
         title={movieTitle}
@@ -47,7 +45,7 @@ const MovieCard = ({ movie }: Props) => {
       ></Card.Meta>
       <Link className="absolute inset-0" to={'/movies/' + movie.id}></Link>
 
-      <div className='-top-px -left-px absolute'>
+      <div className="-top-px -left-px absolute">
         <WatchlistRibbon movie={movie} />
       </div>
     </Card>
