@@ -14,14 +14,7 @@ interface FetchMoviesResponse {
 const useMovies = () => {
   const movieQuery = useMovieQueryStore((s) => s.movieQuery)
 
-  const {
-    data,
-    error,
-    isLoading,
-    isFetchingNextPage,
-    fetchNextPage,
-    hasNextPage,
-  } = useInfiniteQuery<FetchMoviesResponse, Error>({
+  return useInfiniteQuery<FetchMoviesResponse, Error>({
     queryKey: ['movies', movieQuery],
     queryFn: ({ pageParam = 1 }) =>
       apiClient.getAll({
@@ -36,15 +29,6 @@ const useMovies = () => {
     },
     staleTime: ms('24h'),
   })
-
-  return {
-    movies: data?.pages || [],
-    error,
-    isLoading,
-    isFetchingNextPage,
-    fetchNextPage,
-    hasNextPage,
-  }
 }
 
 export default useMovies

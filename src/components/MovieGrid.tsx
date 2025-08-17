@@ -6,19 +6,19 @@ import MovieCard from './MovieCard'
 import MovieCardSkeleton from './MovieCardSkeleton'
 
 const MovieGrid = () => {
-  const { movies, error, isLoading, fetchNextPage, hasNextPage } = useMovies()
+  const { data, error, isLoading, fetchNextPage, hasNextPage } = useMovies()
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   if (error) return <Alert message={error.message} type="error" />
 
-  const fetchedMoviesCount = movies.reduce(
+  const fetchedMoviesCount = data?.pages.reduce(
     (total, page) => total + page.results.length,
     0,
   )
 
   return (
     <InfiniteScroll
-      dataLength={fetchedMoviesCount}
+      dataLength={fetchedMoviesCount ?? 0}
       hasMore={!!hasNextPage}
       next={() => fetchNextPage()}
       loader={
@@ -35,7 +35,7 @@ const MovieGrid = () => {
               <MovieCardSkeleton />
             </div>
           ))}
-        {movies.map((page, index) => (
+        {data?.pages.map((page, index) => (
           <React.Fragment key={index}>
             {page.results.map((movie) => (
               <div key={movie.id}>
