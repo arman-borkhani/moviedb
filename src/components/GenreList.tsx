@@ -4,7 +4,7 @@ import useMovieQueryStore from '../store/useMovieQueryStore'
 import GenreListSkeleton from './GenreListSkeleton'
 
 const GenreList = () => {
-  const { genres, isLoading } = useGenres()
+  const { data, isLoading } = useGenres()
   const selectedGenreId = useMovieQueryStore((s) => s.movieQuery.genreId)
   const setSelectedGenreId = useMovieQueryStore((s) => s.setGenreId)
 
@@ -15,7 +15,7 @@ const GenreList = () => {
       {isLoading && <GenreListSkeleton />}
 
       <Flex wrap gap="small">
-        {genres.map((genre) => (
+        {data?.genres.map((genre) => (
           <Button
             size="middle"
             shape="round"

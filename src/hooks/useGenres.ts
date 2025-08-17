@@ -10,19 +10,12 @@ interface FetchGenresResponse {
   genres: Genre[]
 }
 
-const useGenres = () => {
-  const { data, error, isLoading } = useQuery({
+const useGenres = () =>
+  useQuery({
     queryKey: ['genres'],
     queryFn: apiClient.getAll,
     staleTime: ms('24h'),
     initialData: genres,
   })
-
-  return {
-    genres: data?.genres || [],
-    error,
-    isLoading,
-  }
-}
 
 export default useGenres
