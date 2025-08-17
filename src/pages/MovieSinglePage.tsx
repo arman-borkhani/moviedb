@@ -10,7 +10,7 @@ import useMovie from '../hooks/useMovie'
 
 const MovieSinglePage = () => {
   const { id } = useParams()
-  const { movie, isLoading, error } = useMovie(id!)
+  const { data: movie, error, isLoading } = useMovie(id!)
 
   if (isLoading) return <MovieSinglePageSkeleton />
 

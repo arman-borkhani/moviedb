@@ -4,17 +4,10 @@ import APIClient from '../services/api-client'
 
 const apiClinet = new APIClient<Movie>('movie')
 
-const useMovie = (id: string) => {
-  const { data, error, isLoading } = useQuery({
+const useMovie = (id: string) =>
+  useQuery({
     queryKey: ['movies', id],
     queryFn: () => apiClinet.get(id),
   })
-
-  return {
-    movie: data,
-    error,
-    isLoading,
-  }
-}
 
 export default useMovie
