@@ -11,7 +11,7 @@ const SortSelector = () => {
       <Select
         onChange={(value) => setSortOrder(value)}
         defaultValue="popularity.desc"
-        style={{ width: 200 }}
+        className='w-56'
         options={[
           { value: 'popularity.desc', label: 'Popularity Descending' },
           { value: 'popularity.asc', label: 'Popularity Ascending' },
