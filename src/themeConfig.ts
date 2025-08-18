@@ -7,7 +7,7 @@ const themeConfig = (themeMode: 'light' | 'dark') => {
     components: {
       Layout: {
         headerHeight: 'auto',
-        headerPadding: '16px 0',
+        headerPadding: '1rem 0',
         headerBg: themeMode === 'light' ? '#fff' : '#001529',
       },
       Card: {
