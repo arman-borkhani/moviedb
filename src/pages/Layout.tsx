@@ -1,4 +1,4 @@
-import { Layout as AntLayout, ConfigProvider } from 'antd'
+import { Layout as AntLayout, ConfigProvider, FloatButton } from 'antd'
 import { Outlet } from 'react-router'
 import Navbar from '../components/Navbar'
 import useUIStore from '../store/useUIStore'
@@ -14,6 +14,7 @@ const Layout = () => {
         <AntLayout.Content className="grow py-10">
           <Outlet />
         </AntLayout.Content>
+        <FloatButton.BackTop/>
       </AntLayout>
     </ConfigProvider>
   )
