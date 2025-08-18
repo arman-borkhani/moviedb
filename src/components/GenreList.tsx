@@ -1,7 +1,6 @@
-import { Button, Flex, Typography } from 'antd'
+import { Button, Flex, Spin, Typography } from 'antd'
 import useGenres from '../hooks/useGenres'
 import useMovieQueryStore from '../store/useMovieQueryStore'
-import GenreListSkeleton from './GenreListSkeleton'
 
 const GenreList = () => {
   const { data, isLoading } = useGenres()
@@ -12,7 +11,7 @@ const GenreList = () => {
     <>
       <Typography.Title level={3}>Genre</Typography.Title>
 
-      {isLoading && <GenreListSkeleton />}
+      {isLoading && <Spin />}
 
       <Flex wrap gap="small">
         {data?.genres.map((genre) => (
