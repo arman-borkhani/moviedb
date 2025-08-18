@@ -1,6 +1,6 @@
 import { Skeleton, Flex } from 'antd'
 
-const MovieSinglePageSkeleton = () => {
+const PageSkeleton = () => {
   return (
     <div className="container">
       <div className="grid sm:grid-cols-12 gap-4 lg:gap-10">
@@ -18,10 +18,9 @@ const MovieSinglePageSkeleton = () => {
 
             <Skeleton.Node active className="w-full! h-6! max-w-16 mb-5" />
             <div className="grid grid-cols-2 gap-5">
-              <Skeleton.Node active className="w-full! h-5! max-w-40" />
-              <Skeleton.Node active className="w-full! h-5! max-w-40" />
-              <Skeleton.Node active className="w-full! h-5! max-w-40" />
-              <Skeleton.Node active className="w-full! h-5! max-w-40" />
+              {[...Array(4)].map((_, index) => (
+                <Skeleton.Node key={index} active className="w-full! h-5! max-w-40" />
+              ))}
             </div>
           </Flex>
         </div>
@@ -30,4 +29,4 @@ const MovieSinglePageSkeleton = () => {
   )
 }
 
-export default MovieSinglePageSkeleton
+export default PageSkeleton

@@ -1,6 +1,6 @@
 import 'react-lazy-load-image-component/src/effects/blur.css'
 import { useParams } from 'react-router'
-import MovieSinglePageSkeleton from '../components/MovieSinglePageSkeleton'
+import PageSkeleton from '../components/SingleMovie/PageSkeleton'
 import MovieAttributes from '../components/SingleMovie/MovieAttributes'
 import MovieHeading from '../components/SingleMovie/MovieHeading'
 import MovieOverview from '../components/SingleMovie/MovieOverview'
@@ -12,7 +12,7 @@ const MovieSinglePage = () => {
   const { id } = useParams()
   const { data: movie, error, isLoading } = useMovie(id!)
 
-  if (isLoading) return <MovieSinglePageSkeleton />
+  if(isLoading) return <PageSkeleton />
 
   if (error || !movie) throw error
 
