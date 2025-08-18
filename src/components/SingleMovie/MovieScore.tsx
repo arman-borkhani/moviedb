@@ -11,7 +11,7 @@ const MovieScore = ({ movieVoteAverage }: Props) => {
     <div className="flex items-center mb-8">
       <StarFilled
         className="mr-1 text-base"
-        style={{ color: '#f5c518', fontSize: '30px' }}
+        style={{ color: 'var(--yellow)', fontSize: '1.875rem' }}
       />
 
       <div>
