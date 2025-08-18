@@ -5,6 +5,8 @@ interface Props {
 }
 
 const MovieScore = ({ movieVoteAverage }: Props) => {
+  if (movieVoteAverage === 0) return null
+
   return (
     <div className="flex items-center mb-8">
       <StarFilled
