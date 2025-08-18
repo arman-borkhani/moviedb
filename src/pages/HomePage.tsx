@@ -8,11 +8,13 @@ const HomePage = () => {
     <div className="container">
       <div className="flex flex-col lg:flex-row gap-5">
         <div className="lg:w-56 shrink-0">
-          <Space direction="vertical" size="large">
-            <SortSelector />
+          <div className='sticky top-6 z-10'>
+            <Space direction="vertical" size="large">
+              <SortSelector />
 
-            <GenreList />
-          </Space>
+              <GenreList />
+            </Space>
+          </div>
         </div>
         <div className="grow">
           <MovieGrid />
