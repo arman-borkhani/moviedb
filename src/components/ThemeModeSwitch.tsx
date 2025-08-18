@@ -10,9 +10,9 @@ const ThemeModeSwitch = () => {
     <Flex>
       <label className="cursor-pointer" htmlFor="darkModeCheckbox">
         {darkMode ? (
-          <MoonOutlined style={{ fontSize: '20px' }} />
+          <MoonOutlined style={{ fontSize: '1.25rem' }} />
         ) : (
-          <SunOutlined style={{ fontSize: '20px' }} />
+          <SunOutlined style={{ fontSize: '1.25rem' }} />
         )}
       </label>
 
