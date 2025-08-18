@@ -28,19 +28,21 @@ const MovieCard = ({ movie }: Props) => {
         />
       }
       hoverable
-      className="[&_.ant-card-cover]:leading-none"
+      className="h-full [&_.ant-card-cover]:leading-none"
     >
       <Card.Meta
         title={movieTitle}
         description={
-          <>
-            <StarFilled
-              className="mr-1 text-base"
-              style={{ color: '#f5c518' }}
-            />
-            <span className="text-base">{movie.vote_average.toFixed(1)}</span>
-            <span className="text-xs">/10</span>
-          </>
+          movie.vote_average && (
+            <>
+              <StarFilled
+                className="mr-1 text-base"
+                style={{ color: '#f5c518' }}
+              />
+              <span className="text-base">{movie.vote_average.toFixed(1)}</span>
+              <span className="text-xs">/10</span>
+            </>
+          )
         }
       ></Card.Meta>
       <Link className="absolute inset-0" to={'/movies/' + movie.id}></Link>
