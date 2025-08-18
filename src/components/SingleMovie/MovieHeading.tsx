@@ -10,8 +10,8 @@ const MovieHeading = ({ movie }: Porps) => {
   const runTime = movie.runtime
 
   return (
-    <Flex vertical gap={4} className="mb-8!">
-      <Typography.Title level={1} className="m-0!">
+    <Flex vertical gap={4} style={{ marginBottom: '2rem' }}>
+      <Typography.Title level={1} style={{ margin: 0 }}>
         {movie.title}
 
         {movie.release_date && (
@@ -21,7 +21,7 @@ const MovieHeading = ({ movie }: Porps) => {
 
       <Flex wrap align="center" gap="small">
         {movie.release_date && (
-          <div>
+          <div className="flex items-center gap-2 [&:last-child]:after:hidden after:w-1 after:h-1 after:inline-block after:rounded-full after:bg-current">
             {releaseDate.toLocaleDateString('en-US', {
               month: 'short',
               day: 'numeric',
@@ -31,26 +31,20 @@ const MovieHeading = ({ movie }: Porps) => {
         )}
 
         {movie.genres.length > 0 && (
-          <>
-            <div className="w-1 h-1 rounded-full bg-current"></div>
-
-            <div>
-              {movie.genres.map((genre, index) => (
-                <span key={genre.id}>
-                  {genre.name}
-                  {index < movie.genres.length - 1 && ', '}
-                </span>
-              ))}
-            </div>
-          </>
+          <div className="flex items-center gap-2 [&:last-child]:after:hidden after:w-1 after:h-1 after:inline-block after:rounded-full after:bg-current">
+            {movie.genres.map((genre, index) => (
+              <span key={genre.id}>
+                {genre.name}
+                {index < movie.genres.length - 1 && ', '}
+              </span>
+            ))}
+          </div>
         )}
 
         {runTime > 0 && (
-          <>
-            <div className="w-1 h-1 rounded-full bg-current"></div>
-
-            <div>{`${Math.floor(runTime / 60)}h ${runTime % 60}m`}</div>
-          </>
+          <div className="movie-heading-info">{`${Math.floor(runTime / 60)}h ${
+            runTime % 60
+          }m`}</div>
         )}
       </Flex>
     </Flex>
