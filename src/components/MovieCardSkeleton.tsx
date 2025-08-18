@@ -17,8 +17,8 @@ const MovieCardSkeleton = () => {
       }
     >
       <Space direction="vertical" size="middle" style={{ display: 'flex' }}>
-        <Skeleton.Input active block style={{ height: '24px' }} />
-        <Skeleton.Node active style={{ width: '80px', height: '20px' }} />
+        <Skeleton.Input active block style={{ height: '1.5rem' }} />
+        <Skeleton.Node active style={{ width: '5rem', height: '1.25rem' }} />
       </Space>
     </Card>
   )
