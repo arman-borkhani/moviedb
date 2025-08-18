@@ -24,7 +24,7 @@ const MovieCard = ({ movie }: Props) => {
         <LazyLoadImage
           effect="opacity"
           src={movie.poster_path ? posterPath : noImage}
-          className="w-full lg:h-72 object-cover rounded-tr-xl block!"
+          className="w-full lg:h-72 object-cover rounded-tr-xl block"
         />
       }
       hoverable
@@ -36,8 +36,11 @@ const MovieCard = ({ movie }: Props) => {
           movie.vote_average && (
             <>
               <StarFilled
-                className="mr-1 text-base"
-                style={{ color: '#f5c518' }}
+                style={{
+                  color: 'var(--yellow)',
+                  fontSize: '1rem',
+                  marginRight: '0.25rem',
+                }}
               />
               <span className="text-base">{movie.vote_average.toFixed(1)}</span>
               <span className="text-xs">/10</span>

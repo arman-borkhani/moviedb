@@ -1,7 +1,8 @@
 @import 'tailwindcss';
 
-@theme {
+:root {
   --color-primary: #1677ff;
+  --yellow: #f5c518;
 }
 
 @utility container {
