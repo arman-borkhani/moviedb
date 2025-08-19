@@ -28,7 +28,7 @@ const SearchInput = () => {
       value: `${movie.title} (${year})`,
       key: String(movie.id),
       label: (
-        <Link to={'/movies/' + movie.id}>
+        <Link className='block' to={'/movies/' + movie.id}>
           <Typography.Text>
             {movie.title} ({year})
           </Typography.Text>
