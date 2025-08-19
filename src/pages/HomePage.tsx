@@ -6,7 +6,7 @@ import SortSelector from '../components/SortSelector'
 const HomePage = () => {
   return (
     <div className="container">
-      <div className="flex flex-col lg:flex-row gap-5">
+      <div className="flex flex-col lg:flex-row gap-8">
         <div className="lg:w-56 shrink-0">
           <div className='sticky top-6 z-10'>
             <Space direction="vertical" size="large">
