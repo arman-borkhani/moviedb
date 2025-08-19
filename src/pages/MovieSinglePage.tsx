@@ -1,23 +1,37 @@
+import { ArrowLeftOutlined } from '@ant-design/icons'
+import { Button } from 'antd'
 import 'react-lazy-load-image-component/src/effects/blur.css'
-import { useParams } from 'react-router'
-import PageSkeleton from '../components/SingleMovie/PageSkeleton'
+import { useNavigate, useParams } from 'react-router'
 import MovieAttributes from '../components/SingleMovie/MovieAttributes'
 import MovieHeading from '../components/SingleMovie/MovieHeading'
 import MovieOverview from '../components/SingleMovie/MovieOverview'
 import MoviePoster from '../components/SingleMovie/MoviePoster'
 import MovieScore from '../components/SingleMovie/MovieScore'
+import PageSkeleton from '../components/SingleMovie/PageSkeleton'
 import useMovie from '../hooks/useMovie'
 
 const MovieSinglePage = () => {
   const { id } = useParams()
   const { data: movie, error, isLoading } = useMovie(id!)
+  const navigate = useNavigate()
 
-  if(isLoading) return <PageSkeleton />
+  if (isLoading) return <PageSkeleton />
 
   if (error || !movie) throw error
 
   return (
     <div className="container">
+      <Button
+        variant="outlined"
+        ghost
+        className="mb-6"
+        size="large"
+        onClick={() => navigate(-1)}
+      >
+        <ArrowLeftOutlined />
+        Back
+      </Button>
+
       <div className="grid sm:grid-cols-12 gap-4 lg:gap-10">
         <div className="sm:col-span-6 md:col-span-5 xl:col-span-3">
           <MoviePoster movie={movie} />
